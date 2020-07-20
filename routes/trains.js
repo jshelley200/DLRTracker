@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     console.log("test");
-    //retrive next ratin using req.body.departure and req.body.arrival
 
     fetch("https://api.tfl.gov.uk/Mode/dlr/Arrivals?count=-1")
         .then((res) => res.json())
