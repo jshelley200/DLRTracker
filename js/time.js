@@ -1,8 +1,6 @@
 //This file will contain logic to deal with timer ticking down 
 
-
-
-// will be request in pug/HTML
+// will be requested in .pug/HTML
 
 const countDown = document.getElementById("countDown");
 const arrivalEntry = document.getElementById("arrivalTime");
