@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+    background-color: darkslategrey;
+    font-family: 'Lexend Zetta', sans-serif;
+}
+
+#wrapper {
+    background-color: darkgrey;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 10px;
+
+}
+h1 a {
+    margin-top: 10px;
+    padding-top: 10px;
+}
+button {
+    margin-top: 14px;
+    background-color: white;
+    border-radius: 8px;
+    border: black 2px solid;
+    padding: 4px 20px 4px 20px;
+}
+
+footer {
+    height: 50px;
+}

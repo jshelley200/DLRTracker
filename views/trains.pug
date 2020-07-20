@@ -1,0 +1,16 @@
+extends layout.pug
+
+block content
+    div
+        if data
+            if data.length !== 44
+                h2 The next train will arrive at:
+                h2#arrivalTime #{data}
+                    h2 This is in:
+                    h3#countDown
+            else
+                h2#arrivalTime #{data}
+                    if data.length !== 44
+                        h2 This is in:
+                        h3#countDown
+        include _search.pug

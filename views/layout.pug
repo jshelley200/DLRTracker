@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    title Train Tracker
+    style
+      include ../css/style.css
+    link(href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet")
+  body
+    div#wrapper
+      include header.pug
+      block content
+      include footer.pug
+      script
+        include ../js/time.js
