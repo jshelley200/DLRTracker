@@ -19,15 +19,19 @@ router.post("/", (req, res) => {
                     data[entry].stationName === req.body.departure &&
                     data[entry].destinationName === req.body.arrival
                 ) {
-                    //let time = parseISOString(expectedArrival); 
+                    //let time = parseISOString(expectedArrival);
                     //if (data[entry].stationName === "Stratford DLR Station" && data[entry].destinationName === "Stratford International DLR Station"){
                     res.render("trains.pug", {
-                        data: parseISOString(data[entry].expectedArrival).toLocaleTimeString()
+                        data: parseISOString(data[entry]
+                                            .expectedArrival)
+                                            .toLocaleTimeString(),
                     });
                     return;
                 }
             }
-            res.render("trains.pug", { data: "There are no trains scheduled for this route" });
+            res.render("trains.pug", {
+                data: "There are no trains scheduled for this route",
+            });
         })
         .catch((err) => {
             res.send(err);
@@ -38,6 +42,6 @@ router.post("/", (req, res) => {
 function parseISOString(s) {
     var b = s.split(/\D+/);
     return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
-  }
+}
 
 module.exports = router;
