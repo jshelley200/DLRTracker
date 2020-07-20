@@ -4,11 +4,14 @@ html(lang="en")
     title Train Tracker
     style
       include ../css/style.css
-    link(href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet")
   body
-    div#wrapper
-      include header.pug
-      block content
+    div#wrapper.flex-container
+      div#upperBar
+        include header.pug
+        div#textBox
+          block content
+    div#lowerBar
       include footer.pug
-      script
-        include ../js/time.js
+    script
+      include ../js/time.js

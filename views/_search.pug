@@ -2,16 +2,16 @@
 
 form(action="/trains" method='POST')  
     div
-        label Please Enter Departure
+        label.searchLabel Please Enter Departure
             div
-                select(name="departure")
+                select.formSelect(name="departure")
                     option(value="Stratford DLR Station") Stratford DLR Station  
                     option(value="Stratford International DLR Station") Stratford International DLR Station
                     option(value="West Ham DLR Station") West Ham DLR Station    
     div 
-        label Please Enter Arrival
+        label.searchLabel Please Enter Arrival
             div
-                select(name="arrival")
+                select.formSelect(name="arrival")
                     option(value="Stratford International DLR Station") Stratford International DLR Station   
                     option(value="Stratford DLR Station") Stratford DLR Station
                     option(value="West Ham DLR Station") West Ham DLR Station
