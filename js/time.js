@@ -29,7 +29,7 @@ function getTimeDifference() {
 
 }
 
-countDown.innerText = getTimeDifference()
+countDown.innerText = "Loading..."
 
 setInterval(() => {
     countDown.innerText = getTimeDifference();
