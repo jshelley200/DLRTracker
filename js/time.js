@@ -20,9 +20,13 @@ function getTimeDifference() {
 
     let secondsDiff = ( dateObject - currentTime)/1000;
 
-    let renderDate = new Date(null);
-    renderDate.setSeconds(secondsDiff);
+    //convert seconds to countdown
+
+
+    let renderDate = new Date().clearTime()
+                            .setSeconds(secondsDiff);
     return renderDate.toISOString().substr(11, 8);
+
 }
 
 countDown.innerText = getTimeDifference()
