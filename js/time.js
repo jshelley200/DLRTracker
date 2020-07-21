@@ -33,5 +33,10 @@ function setCharAt(str,index,chr) {
 countDown.innerText = "Loading..."
 
 setInterval(() => {
-    countDown.innerText = getTimeDifference();
+    try {
+        countDown.innerText = getTimeDifference();
+    } catch(error) {
+        console.log(error)
+        countDown.innerText = "Error";
+    }
 }, 1000);
