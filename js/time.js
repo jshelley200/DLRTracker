@@ -19,7 +19,8 @@ function getTimeDifference(timeElement) {
     let secondsDiff = ( dateObject.getTime() - currentTime.getTime())/1000;
 
     //works locally but not on heroku
-    let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
+    let renderDate = new Date(Math.floor(secondsDiff) * 1000).toISOString().substr(11, 8);
+    //let renderDate = Math.floor(secondsDiff);
 
     return renderDate
 }
@@ -38,12 +39,20 @@ setInterval(() => {
 function updateTimes() {
     for (let i = 0; i < countDown.length; i++){
         try {
-            countDown[i].innerText = getTimeDifference(
-                countDown[i].previousElementSibling.previousElementSibling
-            );
+            let timeElement = countDown[i].previousElementSibling.previousElementSibling;
+            
+            if (countDown[i].innerText === "00:00:01") {
+                Location.reload();
+            } else {
+                countDown[i].innerText = getTimeDifference(timeElement);
+            }    
+
         } catch(error) {
         console.log(error)
             countDown[i].innerText = "Error";
         }
     }
 }
+
+
+//need to fix reload on countdown finishing
