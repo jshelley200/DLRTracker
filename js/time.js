@@ -20,13 +20,19 @@ function getTimeDifference() {
 
     let secondsDiff = ( dateObject - currentTime)/1000;
 
-    //convert seconds to countdown
+    //works locally but not on heroku
+    //let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
 
-
-    let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
-
+    //different method
+    let renderDate = new Date(secondsDiff * 1000).toLocaleTimeString();
+    renderDate = setCharAt(renderDate, 1, "0");
     return renderDate
 
+}
+
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
 }
 
 countDown.innerText = "Loading..."
