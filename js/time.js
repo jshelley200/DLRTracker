@@ -16,13 +16,24 @@ function getTimeDifference(timeElement) {
     let dateObject = new Date();
     dateObject.setHours(arrivalTimeArray[0],arrivalTimeArray[1],arrivalTimeArray[2], 0);
 
-    let secondsDiff = ( dateObject.getTime() - currentTime.getTime())/1000;
+    let secondsDiff = Math.floor(( dateObject.getTime() - currentTime.getTime())/1000);
 
     //works locally but not on heroku
-    let renderDate = new Date(Math.floor(secondsDiff) * 1000).toISOString().substr(11, 8);
-    //let renderDate = Math.floor(secondsDiff);
+    //let renderDate = new Date(Math.floor(secondsDiff) * 1000).toISOString().substr(11, 8);
 
-    return renderDate
+    //new approach
+    let seconds = secondsDiff % 60;
+    let minutes = (secondsDiff - seconds)/60;
+    if (minutes <= 9){
+        minutes = '0' + minutes
+    }
+    if (seconds <= 9){
+        seconds = '0' + seconds
+    }
+    
+    let timeString = (minutes + ':' + seconds);
+
+    return timeString;
 }
 
 function setCharAt(str,index,chr) {
@@ -41,8 +52,8 @@ function updateTimes() {
         try {
             let timeElement = countDown[i].previousElementSibling.previousElementSibling;
             
-            if (countDown[i].innerText === "00:00:01") {
-                Location.reload();
+            if (countDown[i].innerText === "00:01") {
+                window.location.reload(true);
             } else {
                 countDown[i].innerText = getTimeDifference(timeElement);
             }    
