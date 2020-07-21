@@ -23,9 +23,9 @@ function getTimeDifference() {
     //convert seconds to countdown
 
 
-    let renderDate = new Date().clearTime()
-                            .setSeconds(secondsDiff);
-    return renderDate.toISOString().substr(11, 8);
+    let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
+
+    return renderDate
 
 }
 
