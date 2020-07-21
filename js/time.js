@@ -14,18 +14,13 @@ function getTimeDifference() {
     arrivalTimeArray.forEach(element => parseInt(element));
 
     let dateObject = new Date();
-    dateObject.setHours(arrivalTimeArray[0])
-    dateObject.setMinutes(arrivalTimeArray[1])
-    dateObject.setSeconds(arrivalTimeArray[2])
+    dateObject.setHours(arrivalTimeArray[0],arrivalTimeArray[1],arrivalTimeArray[2], 0);
 
-    let secondsDiff = ( dateObject - currentTime)/1000;
+    let secondsDiff = ( dateObject.getTime() - currentTime.getTime())/1000;
 
     //works locally but not on heroku
-    //let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
+    let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
 
-    //different method
-    let renderDate = new Date(secondsDiff * 1000).toLocaleTimeString();
-    renderDate = setCharAt(renderDate, 1, "0");
     return renderDate
 
 }
