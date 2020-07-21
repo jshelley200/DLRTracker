@@ -16,7 +16,7 @@ function getTimeDifference(timeElement) {
     let dateObject = new Date();
     dateObject.setHours(arrivalTimeArray[0],arrivalTimeArray[1],arrivalTimeArray[2], 0);
 
-    let secondsDiff = Math.floor(( dateObject.getTime() - currentTime.getTime())/1000);
+    let secondsDiff = Math.floor(( dateObject - currentTime)/1000);
 
     //works locally but not on heroku
     //let renderDate = new Date(Math.floor(secondsDiff) * 1000).toISOString().substr(11, 8);
@@ -53,7 +53,7 @@ function updateTimes() {
             let timeElement = countDown[i].previousElementSibling.previousElementSibling;
             
             if (countDown[i].innerText === "00:01") {
-                window.location.reload(true);
+                countDown[i].parentNode.parentNode.style.display = "none";
             } else {
                 countDown[i].innerText = getTimeDifference(timeElement);
             }    

@@ -5,11 +5,12 @@ block content
         if data
             if data.length !== 44
                 each val in data
-                    h2 The train to #{val[1]} will arrive at #{val[2]} at:
                     div
-                        h2#arrivalTime #{val[0]}
-                            h2 This is in:
-                            h3.countDown
+                        h2 The train to #{val[1]} will arrive at #{val[2]} at:    
+                        div
+                            h2#arrivalTime #{val[0]}
+                                h2 This is in:
+                                h3.countDown
             else
                 h2#arrivalTime #{data}
         include _search.pug
