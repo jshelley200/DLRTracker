@@ -19,7 +19,7 @@ function getTimeDifference() {
     let secondsDiff = ( dateObject.getTime() - currentTime.getTime())/1000;
 
     //works locally but not on heroku
-    let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
+    let renderDate = new Date(secondsDiff).toISOString().substr(11, 8);
 
     return renderDate
 
