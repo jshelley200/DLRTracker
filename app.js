@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const trainsRouter = require("./routes/trains");
 
+const port = process.env.PORT || 3000
+
 const app = express();
 
 app.set("view engine", "pug");
@@ -18,8 +20,8 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(3001, () => {
-    console.log("Server listening on localhost:3001");
+app.listen(port, () => {
+    console.log(`Server listening on ${port}`);
 });
 
 

@@ -4,7 +4,8 @@
   "description": "Shows next train between two stations",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "run": "nodemon app.js"
   },
   "author": "James Shelley",
   "license": "MIT",
