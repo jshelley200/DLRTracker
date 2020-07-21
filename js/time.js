@@ -2,12 +2,12 @@
 
 // will be requested in .pug/HTML
 
-const countDown = document.getElementById("countDown");
-const arrivalEntry = document.getElementById("arrivalTime");
+const countDown = document.querySelectorAll(".countDown");
+//const arrivalEntry = document.getElementById("arrivalTime");
 
-function getTimeDifference() {
+function getTimeDifference(timeElement) {
     let currentTime = new Date();
-    let arrivalTime = arrivalEntry.innerText;
+    let arrivalTime = timeElement.innerText;
 
     let arrivalTimeArray = arrivalTime.split(":");
 
@@ -19,10 +19,9 @@ function getTimeDifference() {
     let secondsDiff = ( dateObject.getTime() - currentTime.getTime())/1000;
 
     //works locally but not on heroku
-    let renderDate = new Date(secondsDiff).toISOString().substr(11, 8);
+    let renderDate = new Date(secondsDiff * 1000).toISOString().substr(11, 8);
 
     return renderDate
-
 }
 
 function setCharAt(str,index,chr) {
@@ -30,13 +29,21 @@ function setCharAt(str,index,chr) {
     return str.substr(0,index) + chr + str.substr(index+1);
 }
 
-countDown.innerText = "Loading..."
+countDown[0].innerText = "Loading..."
 
 setInterval(() => {
-    try {
-        countDown.innerText = getTimeDifference();
-    } catch(error) {
-        console.log(error)
-        countDown.innerText = "Error";
-    }
+    updateTimes();
 }, 1000);
+
+function updateTimes() {
+    for (let i = 0; i < countDown.length; i++){
+        try {
+            countDown[i].innerText = getTimeDifference(
+                countDown[i].previousElementSibling.previousElementSibling
+            );
+        } catch(error) {
+        console.log(error)
+            countDown[i].innerText = "Error";
+        }
+    }
+}
