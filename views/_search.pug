@@ -1,21 +1,21 @@
 
-
-form(action="/trains" method='POST')  
-    div
-        label.searchLabel Please Enter Departure
-            div
-                select.formSelect(name="departure")
-                    option(value="Stratford DLR Station") Stratford DLR Station  
-                    option(value="Stratford International DLR Station") Stratford International DLR Station
-                    option(value="West Ham DLR Station") West Ham DLR Station    
-                    option(value="Stratford High Street DLR Station") Stratford High Street DLR Station
-    div 
-        //
-            label.searchLabel Please Enter Arrival
+div.searchContainer
+    form(action="/trains" method='POST').search  
+        div
+            label.searchLabel Please Enter Departure
                 div
-                    select.formSelect(name="arrival")
-                        option(value="Stratford International DLR Station") Stratford International DLR Station   
-                        option(value="Stratford DLR Station") Stratford DLR Station
-                        option(value="West Ham DLR Station") West Ham DLR Station
-    div
-        button(type="submit") Search
+                    select.formSelect(name="departure")
+                        option(value="Stratford DLR Station") Stratford DLR Station  
+                        option(value="Stratford International DLR Station") Stratford International DLR Station
+                        option(value="West Ham DLR Station") West Ham DLR Station    
+                        option(value="Stratford High Street DLR Station") Stratford High Street DLR Station
+        div 
+            //
+                label.searchLabel Please Enter Arrival
+                    div
+                        select.formSelect(name="arrival")
+                            option(value="Stratford International DLR Station") Stratford International DLR Station   
+                            option(value="Stratford DLR Station") Stratford DLR Station
+                            option(value="West Ham DLR Station") West Ham DLR Station
+        div
+            button(type="submit") Search

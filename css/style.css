@@ -1,14 +1,16 @@
 body {
     text-align: center;
-    background-color: rgb(66, 68, 54);
+    background-color: rgb(67, 80, 82);
     font-family: 'Roboto Mono', monospace;
+    padding: 0px;
+    margin: 0px;
 }
 
 #wrapper {
-    background-color: darkgrey;
+    background-color: rgb(136, 136, 136);
     position: relative;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
     border-radius: 6px;
     z-index: 20;
 }
@@ -61,10 +63,10 @@ footer {
     justify-content: center;
     align-items: flex-end;
     height: 25px;
-    background-color: rgb(129, 129, 129);
+    background-color: rgb(109, 109, 109);
     margin-top: -8px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
     border-radius: 6px;
     padding: 10px;
 }
@@ -77,3 +79,45 @@ footer p a {
     margin-bottom: 12px;
 }
 
+.trainTimeBox {
+    background-color: rgb(140, 169, 173);
+    border: darkslategrey 2px solid;
+    margin: 16px;
+    border-radius: 6px;
+}
+.trainTimeBox h2 {  
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.stationName {
+    font-size: 32px;
+    background-color: rgb(140, 169, 173);
+    border: darkslategrey 2px solid;
+    margin: 16px;
+    border-radius: 6px;
+    padding: 8px
+}
+
+.searchContainer {  
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.search {
+    background-color: rgb(140, 169, 173);
+    border: darkslategrey 2px solid;
+    margin: 16px;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+nav {
+    color: white;
+    width: 100%;
+    background-color: rgb(46, 46, 46);
+    border-top: rgba(0, 0, 0, 0) 1px solid;
+    border-bottom: black 2px solid;
+    
+    margin: 0px;
+}
