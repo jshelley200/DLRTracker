@@ -8,7 +8,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    console.log("test");
 
     fetch("https://api.tfl.gov.uk/Mode/dlr/Arrivals?count=3")
         .then((res) => res.json())
