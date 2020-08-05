@@ -50,6 +50,8 @@ nav {
 .nav-container a {
     position: relative;
     font-size: larger;
+    text-decoration: none;
+    color: white;
     cursor: pointer;
     transition: all .1s ease-in-out;
 }
@@ -149,13 +151,14 @@ button {
 }
 
 
-
-.searchContainer {  
-    padding-left: 30%;
-    padding-right: 30%;
+.searchContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .search {
+    min-width: 200px;
+    max-width: 200px;
     background-color: #eee;
     border: darkslategrey 2px solid;
     margin: 16px;

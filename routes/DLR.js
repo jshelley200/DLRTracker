@@ -48,25 +48,3 @@ function parseISOString(s) {
 
 module.exports = router;
 
-
-// .then((data) => {
-//     ///logic to return next train time with inputs of  arrival: req.body.arrival,  departure: req.body.departure data: json
-//     for (let entry in data) {
-//         if (
-//             data[entry].stationName === req.body.departure &&
-//             data[entry].destinationName === req.body.arrival
-//         ) {
-//             //let time = parseISOString(expectedArrival);
-//             //if (data[entry].stationName === "Stratford DLR Station" && data[entry].destinationName === "Stratford International DLR Station"){
-//             res.render("trains.pug", {
-//                 data: parseISOString(data[entry]
-//                                     .expectedArrival)
-//                                     .toLocaleTimeString(),
-//             });
-//             return;
-//         }
-//     }
-//     res.render("trains.pug", {
-//         data: "There are no trains scheduled for this route",
-//     });
-// })
