@@ -2,43 +2,50 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
 const fetch = require("node-fetch");
+const { Train } = require('../models');
 
 router.get("/", (req, res) => {
     res.render("trains.pug");
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res, next) => {
+    let train;
+    try {
+        train = await Train.create({stationName: req.body.departure, trainLine: "DLR"})
+ 
+        fetch("https://api.tfl.gov.uk/Mode/dlr/Arrivals?count=3")
+            .then((res) => res.json())
+            .then((data) => {
+                let departureArray = [];
+                ///logic to return next train time with inputs of  arrival: req.body.arrival,  departure: req.body.departure data: json
+                for (let entry in data) {
+                    if (data[entry].stationName === req.body.departure) {
+                        
+                        let departureTime = parseISOString(data[entry]
+                                                .expectedArrival)
+                                                .toLocaleTimeString();
+                        let destination = data[entry].destinationName;
 
-    fetch("https://api.tfl.gov.uk/Mode/dlr/Arrivals?count=3")
-        .then((res) => res.json())
-        .then((data) => {
-            let departureArray = [];
-            ///logic to return next train time with inputs of  arrival: req.body.arrival,  departure: req.body.departure data: json
-            for (let entry in data) {
-                if (data[entry].stationName === req.body.departure) {
-                    
-                    let departureTime = parseISOString(data[entry]
-                                            .expectedArrival)
-                                            .toLocaleTimeString();
-                    let destination = data[entry].destinationName;
-
-                    let departure = data[entry].stationName;
-                    
-                    //this pushes the depature time values and destination values in an array that is passed to pug file to retreive data using array index
-                    departureArray.push( [departureTime,destination,departure] );
+                        let departure = data[entry].stationName;
+                        
+                        //this pushes the depature time values and destination values in an array that is passed to pug file to retreive data using array index
+                        departureArray.push( [departureTime,destination,departure] );
+                    }
                 }
-            }
-            if (departureArray.length > 0){
-                res.render("trains.pug", { data: departureArray});
-                
-            } else{
-                res.render("trains.pug", { data: "There are no trains scheduled for this route"});
-            }
-        })
-        .catch((err) => {
-            res.send(err);
-            res.redirect("/");
-        });
+                if (departureArray.length > 0){
+                    res.render("trains.pug", { data: departureArray});
+                    
+                } else{
+                    res.render("trains.pug", { data: "There are no trains scheduled for this route"});
+                }
+            })
+            .catch((err) => {
+                res.send(err);
+                res.redirect("/");
+            });
+    } catch (error) {
+        throw error
+    }
 });
 
 function parseISOString(s) {

@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const DLRRouter = require("./routes/DLR");
+const { sequelize } = require('./models');
 
 const port = process.env.PORT || 3000
 
@@ -8,6 +9,8 @@ const app = express();
 
 app.set("view engine", "pug");
 app.use(bodyParser.urlencoded({ extended: false }));
+
+
 
 //handles /trains router
 app.use("/DLR", DLRRouter)
@@ -34,8 +37,11 @@ app.use('/', (err, req, res, next) => {
     
 });
 
-app.listen(port, () => {
-    console.log(`Server listening on ${port}`);
-});
 
+
+sequelize.sync().then(() => {
+    app.listen(port, () => {
+        console.log(`Server listening on ${port}`);
+    });
+})
 
