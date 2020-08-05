@@ -2,10 +2,13 @@ html {
     overflow: hidden;
     height: 100%;
 }
+select{
+    text-align-last: center;
+}
 
 body {
     text-align: center;
-    background-color: rgb(67, 80, 82);
+    background-color: #ddd;
     font-family: 'Roboto Mono', monospace;
     padding: 0px;
     margin: 0px;
@@ -14,17 +17,63 @@ body {
     overflow: auto;
 }
 
-#wrapper {
-    background-color: rgb(136, 136, 136);
+/* Nav */
+nav {
+    color: #eee;
+    width: 100%;
+    background-color: rgb(46, 46, 46);
+    border-top: rgba(0, 0, 0, 0) 1px solid;
+    border-bottom: black 2px solid;
+    
+    margin: 0px;
+}
+
+.nav-container {
+    margin: 0 auto;
+}
+
+.nav-container ul {
+    padding: 0 10px;
+    margin: 12px 20px;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.nav-container li {
+    margin:  0;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.nav-container a {
     position: relative;
+    font-size: larger;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.nav-container a:hover{
+    transform: scale(1.2);
+}
+
+/* Main */
+#wrapper {
+    background-color: #eee;
+    position: relative;
+    margin-top: 20px;
     margin-left: 10%;
     margin-right: 10%;
     border-radius: 6px;
     z-index: 20;
+    border: 2px rgba(17, 17, 17, 0.295) solid;
+    filter: drop-shadow(0 4px 0.5rem #888);
 }
 
 #upperBar {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 20px;
@@ -67,46 +116,39 @@ button {
     z-index: 0;
 }
 
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 25px;
-    background-color: rgb(109, 109, 109);
-    margin-top: -8px;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 6px;
-    padding: 10px;
-}
-
-footer p {
-    margin: 0;
-}
-
-footer p a {
-    margin-bottom: 12px;
+/* Time Boxes */
+.stationName {
+    font-size: 32px;
+    background-color: #eee;
+    border-bottom: darkslategrey 2px solid;
+    margin: 16px;
+    padding: 8px;
+    padding-bottom: 10px
 }
 
 .trainTimeBox {
-    background-color: rgb(140, 169, 173);
-    border: darkslategrey 2px solid;
+    background-color: #eee;
     margin: 16px;
-    border-radius: 6px;
+    position: relative;
+    padding-bottom: 6px;
 }
+
+.trainTimeBox::after {
+    content : "";
+  position: absolute;
+  left    : 30%;
+  bottom  : 0;
+  height  : 1px;
+    width: 40%;
+    border-bottom: rgba(47, 79, 79, 0.233) 2px solid;
+}
+
 .trainTimeBox h2 {  
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.stationName {
-    font-size: 32px;
-    background-color: rgb(140, 169, 173);
-    border: darkslategrey 2px solid;
-    margin: 16px;
-    border-radius: 6px;
-    padding: 8px
-}
+
 
 .searchContainer {  
     padding-left: 30%;
@@ -114,7 +156,7 @@ footer p a {
 }
 
 .search {
-    background-color: rgb(140, 169, 173);
+    background-color: #eee;
     border: darkslategrey 2px solid;
     margin: 16px;
     border-radius: 6px;
@@ -126,12 +168,23 @@ footer p a {
     width: 100%;
 }
 
-nav {
-    color: white;
-    width: 100%;
-    background-color: rgb(46, 46, 46);
-    border-top: rgba(0, 0, 0, 0) 1px solid;
-    border-bottom: black 2px solid;
-    
-    margin: 0px;
+/* Footer */
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 25px;
+    background-color: rgb(109, 109, 109);
+    margin-top: -8px;
+    border-radius: 0 0 4px 4px;
+    padding: 10px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer p a {
+    margin-bottom: 12px;
 }

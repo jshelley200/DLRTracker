@@ -40,7 +40,9 @@ function setCharAt(str,index,chr) {
     return str.substr(0,index) + chr + str.substr(index+1);
 }
 
-countDown[0].innerText = "Loading..."
+countDown.forEach(timer => {
+    timer.innerText = "Loading..."
+});
 
 setInterval(() => {
     updateTimes();
@@ -52,6 +54,7 @@ function updateTimes() {
             let timeElement = countDown[i].previousElementSibling.previousElementSibling;
             
             if (countDown[i].innerText === "00:01") {
+                //trigger disappearance
                 countDown[i].parentNode.parentNode.style.display = "none";
             } else {
                 countDown[i].innerText = getTimeDifference(timeElement);
